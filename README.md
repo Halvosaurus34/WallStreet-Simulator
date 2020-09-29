@@ -1,1 +1,2 @@
-# Project-1 edited
+# Project-1
+* Brain storm App ideas:
