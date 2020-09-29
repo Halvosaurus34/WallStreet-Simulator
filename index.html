@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Gaming News</title>
+    <!-- Bootstrap CSS CDN  -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://kit.fontawesome.com/09df56e628.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="assets/style.css" />
+    <style></style>
+  </head>
+
+  <body>
+    <div class="row pr-0 mr-0">
+      <div class="col" style="background-color: #20315a; color: white">
+        <h1 class="text-center">
+          <strong>
+            Gaming News</strong
+          >
+        </h1>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="mainPage col-lg-3 col-md-12 col-sm-12 col-12 bg-light">
+        <div class="ml-3">
+        <nav
+          class="navbar-light pl-3 bg-light form-inline"
+          style="border-bottom: 1px solid lightgrey"
+        >
+          <span class="navbar-brand mb-2 h1 ml-0 mr-0"
+            ><i class="fas fa-keyboard"></i> Search Parameters</span
+          >
+        </nav>
+        <p class="mb-0 ml-3 mr-3 mt-2">Search Term:</p>
+
+        <div class="input-group mb-3 mt-0 ml-3 mr-3 pr-5">
+          <div class="input-group-prepend"></div>
+          <input
+            id="searchParam"
+            type="text"
+            class="form-control"
+            aria-describedby="basic-addon1"
+          />
+        </div>
+        <p class="mb-0 ml-3">Number of Records to Retrieve:</p>
+
+        <div class="input-group mb-3 ml-3 mr-3 pr-5">
+          <div class="input-group-prepend"></div>
+          <select class="custom-select" id="responseNum">
+            <option selected>Choose...</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+        <button class="ml-3 btn mb-3" id="run-search">
+          <i class="fas fa-search"></i> Search
+        </button>
+        <button class="ml-3 btn mb-3">
+          <i class="fas fa-trash"></i> Clear Results
+        </button>
+        </div>
+      </div>
+      <div class="mt-3 col-lg-9 col-md-12 col-sm-12 col-12">
+        <div class="mainPage">
+          <nav
+            class="navbar-light pl-3 bg-light form-inline"
+            style="border-bottom: 1px solid lightgrey"
+          >
+            <span class="navbar-brand mb-2 h1 ml-0 mr-3"
+              ><i class="fas fa-calendar-alt"></i> Top Articles</span
+            >
+          </nav>
+          <div class="container" id="results">
+            
+          </div>
+        </div>
+        <div class="text-center pt-2 pb-3 mt-2 border-top">
+          Made with lots and lots of &#10084
+        </div>
+      </div>
+  
+    </div>
+
+    <!-- jQuery JS -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+    <!-- Code to the JavaScript File -->
+    <script src="assets/app.js"></script>
+  </body>
+</html>
