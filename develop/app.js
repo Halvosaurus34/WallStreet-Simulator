@@ -1,4 +1,31 @@
 // working api-key, or put your own in here
+var users = {
+  user1: {
+    user: "Levi",
+    stocks: ["GOOGL", "AAPL"],
+    networth: "",
+    cash: "",
+  },
+  user2: {
+    user: "Jordan",
+    stocks: ["BA", "AXP"],
+    networth: "",
+    cash: "",
+  },
+  user3: {
+    user: "Shihan",
+    stocks: ["AXP", "DOW"],
+    networth: "",
+    cash: "",
+  },
+  user4: {
+    user: "Sajal",
+    stocks: ["DOW", "HON"],
+    networth: "",
+    cash: "",
+  },
+};
+
 var stock = ["GOOGL", "BA", "AXP", "DOW", "HON"];
 var i = 0;
 var times = 0;
@@ -34,4 +61,7 @@ function getStock(event) {
   </div>
 `);
   });
+}
+for (const property in users) {
+  console.log(`${property}: ${users[property]}`);
 }
