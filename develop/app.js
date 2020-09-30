@@ -50,14 +50,16 @@ function getStock(event) {
     var symbol = response["Global Quote"]["01. symbol"];
     var price = response["Global Quote"]["05. price"];
     var change = response["Global Quote"]["09. change"];
-    $("#nav-tabContent").html(`<div
-        class="card mt-2"
+    $("#nav-tabContent").html(`<div class=" mt-3 border rounded shadow">
+    <div
+        class="ml-3 mt-3 mb-3"
         role="tabpanel"
         aria-labelledby="list-1-list"
     >
     <div class="card-title h1">${symbol}</div>
     <div class="card-text lead">Price: ${price}</div>
     <div class="card-text lead">Change: ${change}</div>
+    </div>
 `);
   });
 }
