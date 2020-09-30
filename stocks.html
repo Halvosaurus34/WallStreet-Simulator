@@ -61,7 +61,28 @@
       <div class="display-4 text-center bg-light">Stock Sim</div>
     </div>
     <div class="container">
-      <div class="row">
+      <ul class="nav nav-tabs align-center">
+        <li class="nav-item">
+          <a class="nav-link" href="#" id="GOOGL" onClick="getStock(event)">Google</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" id="BA" onClick="getStock(event)">Boeing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" id="AXP" onClick="getStock(event)">American Express</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" id="DOW" onClick="getStock(event)">DOW</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" id="HON" onClick="getStock(event)">HoneyWell</a>
+        </li>
+      </ul>
+      <div class="container">
+        <div class=" mt-3" style="height:300px" id="nav-tabContent">
+        </div>
+      </div>
+      <!-- <div class="row">
         <div class="col-4">
           <div class="list-group" id="list-tab" role="tablist">
             <a
@@ -117,7 +138,7 @@
           </div>
         </div>
         <div class="col-8">
-          <div class="tab-content" id="nav-tabContent">
+          <div class="tab-content" id="nav-tabContent"> -->
             <!-- <div
               class="tab-pane active"
               id="list-1"
