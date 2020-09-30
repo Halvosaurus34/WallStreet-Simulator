@@ -1,100 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Gaming News</title>
-    <!-- Bootstrap CSS CDN  -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://kit.fontawesome.com/09df56e628.js"
-      crossorigin="anonymous"
-    ></script>
-  </head>
-
-  <body>
-    <div class="row pr-0 mr-0">
-      <div class="col" style="background-color: #20315a; color: white">
-        <h1 class="text-center">
-          <strong>
-            Gaming News</strong
-          >
-        </h1>
-      </div>
-    </div>
-
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <title>Stocks</title>
+</head>
+<body>
+  <ul class="nav justify-content-center bg-dark text-light">
+    <li class="nav-item">
+      <h1>
+        Wallstreet Simulator
+      </h1>
+    </li>
+  </ul>
+  <div class="container">
     <div class="row">
-      <div class="mainPage col-lg-3 col-md-12 col-sm-12 col-12 bg-light">
-        <div class="ml-3">
-        <nav
-          class="navbar-light pl-3 bg-light form-inline"
-          style="border-bottom: 1px solid lightgrey"
-        >
-          <span class="navbar-brand mb-2 h1 ml-0 mr-0"
-            ><i class="fas fa-keyboard"></i> Search Parameters</span
-          >
-        </nav>
-        <p class="mb-0 ml-3 mr-3 mt-2">Search Term:</p>
-
-        <div class="input-group mb-3 mt-0 ml-3 mr-3 pr-5">
-          <div class="input-group-prepend"></div>
-          <input
-            id="searchParam"
-            type="text"
-            class="form-control"
-            aria-describedby="basic-addon1"
-          />
-        </div>
-        <p class="mb-0 ml-3">Number of Records to Retrieve:</p>
-
-        <div class="input-group mb-3 ml-3 mr-3 pr-5">
-          <div class="input-group-prepend"></div>
-          <select class="custom-select" id="responseNum">
-            <option selected>Choose...</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-        </div>
-        <button class="ml-3 btn mb-3" id="run-search">
-          <i class="fas fa-search"></i> Search
-        </button>
-        <button class="ml-3 btn mb-3">
-          <i class="fas fa-trash"></i> Clear Results
-        </button>
+      <div class="col-4">
+        <div class="list-group" id="list-tab stocks" role="tablist">
+          <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-1" role="tab" aria-controls="home">Apple</a>
+          <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-2" role="tab" aria-controls="profile">Google</a>
+          <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-3" role="tab" aria-controls="messages">Samsung</a>
+          <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-4" role="tab" aria-controls="settings">Exxon</a>
+          <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-5" role="tab" aria-controls="settings">adfasdf</a>
         </div>
       </div>
-      <div class="mt-3 col-lg-9 col-md-12 col-sm-12 col-12">
-        <div class="mainPage">
-          <nav
-            class="navbar-light pl-3 bg-light form-inline"
-            style="border-bottom: 1px solid lightgrey"
-          >
-            <span class="navbar-brand mb-2 h1 ml-0 mr-3"
-              ><i class="fas fa-calendar-alt"></i> Top Articles</span
-            >
-          </nav>
-          <div class="container" id="results">
-            
+      <div class="col-8">
+        <div class="tab-content" id="nav-tabContent info">
+          <div class="tab-pane fade show active" id="list-1" role="tabpanel" aria-labelledby="list-1-list">
+            <div id="name"></div>
+            <div id="price"></div>
+            <div id="change"></div>
+          </div>
+          <div class="tab-pane fade" id="list-2" role="tabpanel" aria-labelledby="list-2-list">
+            <div id="name"></div>
+            <div id="price"></div>
+            <div id="change"></div>
+          </div>
+          <div class="tab-pane fade" id="list-3" role="tabpanel" aria-labelledby="list-3-list">
+            <div id="name"></div>
+            <div id="price"></div>
+            <div id="change"></div>
+          </div>
+          <div class="tab-pane fade" id="list-4" role="tabpanel" aria-labelledby="list-4-list">
+            <div id="name"></div>
+            <div id="price"></div>
+            <div id="change"></div>
+          </div>
+          <div class="tab-pane fade" id="list-5" role="tabpanel" aria-labelledby="list-5-list">
+            <div id="name"></div>
+            <div id="price"></div>
+            <div id="change"></div>
           </div>
         </div>
-        <div class="text-center pt-2 pb-3 mt-2 border-top">
-          Made with lots and lots of &#10084
-        </div>
       </div>
-  
     </div>
-
-    <!-- jQuery JS -->
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
-    <!-- Code to the JavaScript File -->
-    <script src="develop/app.js"></script>
-  </body>
+  </div>
+  <script src="develop/app.js"></script>
+</body>
 </html>
