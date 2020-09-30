@@ -18,6 +18,10 @@ function getStock() {
     };
     $.ajax(settings).done(function (response) {
       console.log(response);
+      for (let i =0; i< 5; i++){
+        document.querySelector("#list-tab").children[i].innerHTML = response["Global Quote"].Object["01. symbol"];
+        document.querySelector("#list-tab").children[i].innerHTML = response["Global Quote"].Object["01. symbol"];
+      }
     });
   }
 }
