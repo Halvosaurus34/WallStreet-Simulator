@@ -1,8 +1,8 @@
 // working api-key, or put your own in here
 var stock = ["GOOGL", "BA", "AXP", "DOW", "HON"];
-
+var i=0;
+var times = 0
 function getStock() {
-  for (var i = 0; i < stock.length; i++) {
     var settings = {
       async: true,
       crossDomain: true,
@@ -18,11 +18,23 @@ function getStock() {
     };
     $.ajax(settings).done(function (response) {
       console.log(response);
-      for (let i =0; i< 5; i++){
-        document.querySelector("#list-tab").children[i].innerHTML = response["Global Quote"].Object["01. symbol"];
-        document.querySelector("#list-tab").children[i].innerHTML = response["Global Quote"].Object["01. symbol"];
+      console.log(i);
+      document.querySelector("#list-tab").children[i].innerHTML = response["Global Quote"]["01. symbol"];
+      i++; 
+      if(i == 5){
+        clearInterval();
       }
-    });
-  }
+      }
+    );
 }
-getStock();
+
+
+
+function callfunction(){
+  if (times<5){
+    getStock()
+  }
+  times++;
+}
+
+setInterval(callfunction,1000);
