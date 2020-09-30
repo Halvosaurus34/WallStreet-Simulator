@@ -13,28 +13,38 @@ function getStock() {
       method: "GET",
       headers: {
         "x-rapidapi-host": "alpha-vantage.p.rapidapi.com",
-        "x-rapidapi-key": "f6942c8e51msh900f6da59329b1cp187d57jsnf00c9a9fcbee",
+        "x-rapidapi-key": "9778abae07msh6e3fcf350e0115cp17ebcajsn6a16d9555f35",
       },
     };
     $.ajax(settings).done(function (response) {
       console.log(response);
       console.log(i);
       document.querySelector("#list-tab").children[i].innerHTML = response["Global Quote"]["01. symbol"];
-      i++; 
-      if(i == 5){
-        clearInterval();
-      }
+      document.querySelector("#nav-tabContent").children[i].children[1].innerHTML = "Price: " +  response["Global Quote"]["05. price"];
+      i++;
       }
     );
 }
 
-
+function showinfo(event){
+  console.log("click")
+  for(let i=0; i<5;i++){
+    document.querySelector("#nav-tabContent").children[i].classList.remove("show")
+    document.querySelector("#nav-tabContent").children[i].classList.remove("active")
+  }
+  event.target.classList.add("show");
+  event.target.classList.add("active");
+}
 
 function callfunction(){
-  if (times<5){
+  if (times<stock.length){
     getStock()
   }
   times++;
 }
+document.querySelector("#list-tab").children[0].addEventListener('click',showinfo)
+// for(let i=0; i<5;i++){
+//   document.querySelector("#nav-tabContent").children[i].addEventListener('click',showinfo)
+// }
 
 setInterval(callfunction,1000);
