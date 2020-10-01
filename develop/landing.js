@@ -6,7 +6,7 @@ var loggedin = false;
 var loggedin_name = "";
 var users;
 if (window.navigator.userAgent == "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0"){
-  users = JSON.parse(localStorage.getItem("UserProfile"))
+  users = localStorage.userProfile ? JSON.parse(localStorage.getItem("UserProfile") ) : []
 } else {
   users ={}
 }
@@ -79,7 +79,7 @@ function signupfunction(event){
     if (usernameE in users){
       console.log('username is taken');
     } else {
-      users[usernameE] = {user: usernameE, password: passwordE}
+      users[usernameE] = {user: usernameE, password: passwordE, stocks:{"AAPL":2}}
       alertfunction('signup')
     }
   localStorage.setItem("UserProfile",JSON.stringify(users));
