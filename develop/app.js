@@ -32,13 +32,37 @@ var times = 0;
 var graphVal = [];
 var days = [];
 var query = "";
+//variables for buy & sell stocks
+var Amount = 0; //the increment variable, how many stocks users buy
+var currentNetWorth = 0; //Net worth at start
+var bank = 1000; // total money in bank account
+var selectedStockid = ""; //the stock user want to do actions
+var storedPrice = 0;
 
 function buyStock(event) {
-    console.log(event.target.parentElement.children[0].textContent);
+    console.log(event.target);
+    console.log("buy");
+    if (Amount * storedPrice > bank) {
+        alert("You don't have enough money");
+    } else {
+        bank = bank - Amount * storedPrice;
+        currentNetWorth = currentNetWorth + Amount * storedPrice;
+        console.log("You have:" + bank + " left in your bank account");
+        console.log("The stock you own worth: " + currentNetWorth + " currently");
+    }
 }
 
 function sellStock(event) {
-    console.log(event.target.parentElement.children[0].textContent);
+    console.log(event.target);
+    console.log("sell");
+    if (Amount * storedPrice > currentNetWorth) {
+        alert("You don't have enough stock to sell");
+    } else {
+        bank = bank + Amount * storedPrice;
+        currentNetWorth = currentNetWorth - Amount * storedPrice;
+        console.log("You have:" + bank + " left in your bank account");
+        console.log("The stock you own worth: " + currentNetWorth + " currently");
+    }
 }
 
 function getStock() {
@@ -57,6 +81,8 @@ function getStock() {
     $.ajax(settings).done(function(response) {
         var symbol = response["Global Quote"]["01. symbol"];
         var price = response["Global Quote"]["05. price"];
+        storedPrice = price;
+        //console.log(price);
         var change = response["Global Quote"]["09. change"];
         $("#nav-tabContent").html(`<div class=" mt-3 border rounded shadow">
     <div
@@ -65,12 +91,13 @@ function getStock() {
         aria-labelledby="list-1-list"
     >
     <div class="card-title h1">${symbol}</div>
-    <div class="card-text lead">Price: ${Number(price).toFixed(2)}</div>
-    <div class="card-text lead">Change: ${Number(change).toFixed(2)}</div>
+    <div class="card-text lead" id = "price">Price: ${Number(price).toFixed(2)}</div>
+    <div class="card-text lead" id = "change">Change: ${Number(change).toFixed(2)}</div>
     <br>
     <div class="form-group">
       <br>
-      <input type="input" class="form-control w-25 p-3" id="stockamount" placeholder="Enter Amount">
+      <input type="text" id="myAmount" placeholder="Enter Amount" oninput="inputAmount()">
+      <p id="amount"></p>
     </div>  
     
     <div class="chart-container w-auto h-auto">
@@ -87,6 +114,12 @@ function getStock() {
         getGraph();
     });
 }
+
+function inputAmount() {
+    Amount = document.getElementById("myAmount").value;
+    document.getElementById("amount").innerHTML = "Your entered: " + Amount;
+}
+
 
 function getStockBtn(event) {
     var settings = {
@@ -152,7 +185,7 @@ function getGraph() {
                 // console.log(time);
                 graphVal.push(response["Time Series (Daily)"][day]["2. high"]);
                 days.push(day);
-                console.log(days);
+                //console.log(days);
             }
         }
         createGraph();
