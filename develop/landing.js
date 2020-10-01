@@ -55,9 +55,8 @@ function loginfunction(event){
     if (usernameE in users && passwordE == users[usernameE].password) {
       console.log('logged in');
       loggedin = true;
-      loggedin_name = usernameE;
       localStorage.setItem("loggedin","true");
-      localStorage.setItem("loginName",loggedin_name);
+      localStorage.setItem("loginName","usernameE");
       document.querySelector("#logout-btn").setAttribute("style","display: block");
       hidelogin();
       alertfunction('hide');
@@ -101,6 +100,7 @@ function alertfunction(message){
 
 if(localStorage.getItem("loggedin")=='true'){
   hidelogin();
+  document.querySelector("#logout-btn").setAttribute("style","display: block")
 }
 
 
