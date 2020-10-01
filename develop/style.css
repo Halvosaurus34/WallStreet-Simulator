@@ -1,39 +1,75 @@
 .navbar {
-  background-color: #00008b;
+    background-color: #00008b;
 }
 
-html,body {
-  height:100%;
-width:100%;
-position:relative;
+html,
+body {
+    height: 100%;
+    width: 100%;
+    position: relative;
 }
-#background-carousel{
-position:fixed;
-width:100%;
-height:100%;
-z-index:-1;
+
+#background-carousel {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 }
+
 .carousel,
 .carousel-inner {
-width:100%;
-height:100%;
-z-index:0;
-overflow:hidden;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
 }
+
 .item {
-width:100%;
-height:100%;
-background-position:center center;
-background-size:cover;
-z-index:0;
+    width: 100%;
+    height: 100%;
+    background-position: center center;
+    background-size: cover;
+    z-index: 0;
 }
 
 #content-wrapper {
-position:absolute;
-z-index:1 !important;
-min-width:100%;
-min-height:100%;
+    position: absolute;
+    z-index: 1 !important;
+    min-width: 100%;
+    min-height: 100%;
 }
+
 .well {
-  opacity:0.85
+    opacity: 0.85
+}
+
+div.sell-buy-stocks-buttons {
+    float: left;
+    width: 100%;
+    height: 50%;
+}
+
+div.sell-buy-stocks-buttons input {
+    float: left;
+    width: 50%;
+    height: 100%;
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+input.sell-buy-stocks-buttons-buy {
+    background-color: #008000;
+}
+
+input.sell-buy-stocks-buttons-sell {
+    background-color: #800000;
+}
+
+input.sell-buy-stocks-buttons-buy:hover {
+    background-color: #00d000;
+}
+
+input.sell-buy-stocks-buttons-sell:hover {
+    background-color: #d00000;
 }
