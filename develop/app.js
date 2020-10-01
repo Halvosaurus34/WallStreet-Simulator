@@ -40,7 +40,6 @@ function sellStock(event) {
 }
 
 function getStock() {
-  console.log("Clicked search button");
   var settings = {
     async: true,
     crossDomain: true,
@@ -79,7 +78,7 @@ function getStock() {
     </div>
     </div>
 `);
-    createGraph();
+    getGraph();
   });
 }
 
@@ -117,7 +116,7 @@ function getStockBtn(event) {
       </div>
       </div>
   `);
-    createGraph();
+    getGraph();
   });
 }
 
@@ -135,19 +134,19 @@ function getGraph() {
   };
 
   $.ajax(settings).done(function (response) {
+    graphVal = [];
+    days = [];
     for (var i = 100; i > 0; i--) {
-      console.log();
       day = moment().subtract(i, "days").format("YYYY-MM-DD");
       if (response["Time Series (Daily)"][day] == undefined) {
-        console.log("undefined");
         day = null;
       } else {
         // console.log(time);
         graphVal.push(response["Time Series (Daily)"][day]["2. high"]);
-        console.log(graphVal);
         days.push(day);
       }
     }
+    createGraph();
   });
 }
 
@@ -183,7 +182,6 @@ function createGraph() {
     },
   });
 }
-getGraph();
 
 for (const property in users) {
   console.log(`${property}: ${users[property].user}`);
