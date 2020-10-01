@@ -31,6 +31,7 @@ var i = 0;
 var times = 0;
 var graphVal = [];
 var days = [];
+var query = "";
 
 function buyStock(event) {
   console.log(event.target.parentElement.children[0].textContent);
@@ -97,6 +98,7 @@ function getStockBtn(event) {
     },
   };
   $.ajax(settings).done(function (response) {
+    query = event.target.id;
     var symbol = response["Global Quote"]["01. symbol"];
     var price = response["Global Quote"]["05. price"];
     var change = response["Global Quote"]["09. change"];
@@ -124,8 +126,7 @@ function getGraph() {
   var settings = {
     async: true,
     crossDomain: true,
-    url:
-      "https://alpha-vantage.p.rapidapi.com/query?outputsize=compact&datatype=json&function=TIME_SERIES_DAILY&symbol=MSFT",
+    url: `https://alpha-vantage.p.rapidapi.com/query?outputsize=compact&datatype=json&function=TIME_SERIES_DAILY&symbol=${query}`,
     method: "GET",
     headers: {
       "x-rapidapi-host": "alpha-vantage.p.rapidapi.com",
@@ -136,14 +137,18 @@ function getGraph() {
   $.ajax(settings).done(function (response) {
     graphVal = [];
     days = [];
+    day = 0;
+    console.log(response["Time Series (Daily)"]);
     for (var i = 100; i > 0; i--) {
       day = moment().subtract(i, "days").format("YYYY-MM-DD");
+
       if (response["Time Series (Daily)"][day] == undefined) {
         day = null;
       } else {
         // console.log(time);
         graphVal.push(response["Time Series (Daily)"][day]["2. high"]);
         days.push(day);
+        console.log(days);
       }
     }
     createGraph();
@@ -190,5 +195,6 @@ for (const property in users) {
 $("#searchBtn").on("click", function () {
   console.log("click");
   query = $("#searchResult").val();
+  console.log(query);
   getStock();
 });
