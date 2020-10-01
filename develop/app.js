@@ -78,8 +78,8 @@ function getStock() {
     </div>
          <div class="sell-buy-stocks">
                     <div class="sell-buy-stocks-buttons">
-                        <input class="sell-buy-stocks-buttons-buy" type="button" onclick="buyStock()" value="Buy" />
-                        <input class="sell-buy-stocks-buttons-sell" type="button" onclick="sellStock()" value="Sell" />
+                        <input class="sell-buy-stocks-buttons-buy" type="button" onclick="buyStock(event)" value="Buy" />
+                        <input class="sell-buy-stocks-buttons-sell" type="button" onclick="sellStock(event)" value="Sell" />
                     </div>
          </div>
     </div>
