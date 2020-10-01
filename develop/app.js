@@ -29,15 +29,15 @@ var users = {
 var stock = ["GOOGL", "BA", "AXP", "DOW", "HON"];
 var i = 0;
 var times = 0;
-function buyStock(event){
-  console.log(event.target.parentElement.children[0].textContent)
+function buyStock(event) {
+  console.log(event.target.parentElement.children[0].textContent);
 }
-function sellStock(event){
-  console.log(event.target.parentElement.children[0].textContent)
+function sellStock(event) {
+  console.log(event.target.parentElement.children[0].textContent);
 }
-
 
 function getStock() {
+  console.log("Clicked search button");
   var settings = {
     async: true,
     crossDomain: true,
@@ -63,8 +63,8 @@ function getStock() {
         aria-labelledby="list-1-list"
     >
     <div class="card-title h1">${symbol}</div>
-    <div class="card-text lead">Price: ${price}</div>
-    <div class="card-text lead">Change: ${change}</div>
+    <div class="card-text lead">Price: ${Number(price).toFixed(2)}</div>
+    <div class="card-text lead">Change: ${Number(change).toFixed(2)}</div>
     <br>
     <div class="form-group">
       <br>
