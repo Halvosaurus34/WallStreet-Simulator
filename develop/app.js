@@ -74,7 +74,9 @@ function getStock() {
     </div>  
     <button class="btn btn-primary" id="buybtn" onclick="buyStock(event)">Buy</button>
     <button class="btn btn-primary mb-3" id="buybtn" onclick="sellStock(event)">Sell</button>
-    <canvas id="myChart" width="400" height="400"></canvas>
+    <div class="chart-container w-auto h-auto">
+    <canvas id="myChart"></canvas>
+    </div>
     </div>
 `);
     createGraph();
@@ -110,7 +112,9 @@ function getStockBtn(event) {
       <div class="card-text lead mb-3">Change: ${Number(change).toFixed(
         2
       )}</div>
-      <canvas id="myChart" width="400" height="400"></canvas>
+      <div class="chart-container w-auto h-auto" >
+        <canvas id="myChart"></canvas>
+      </div>
       </div>
   `);
     createGraph();
