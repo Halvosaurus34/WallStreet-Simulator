@@ -181,17 +181,6 @@ function createGraph() {
         },
       ],
     },
-    options: {
-      scales: {
-        yAxes: [
-          {
-            ticks: {
-              beginAtZero: true,
-            },
-          },
-        ],
-      },
-    },
   });
 }
 getGraph();
