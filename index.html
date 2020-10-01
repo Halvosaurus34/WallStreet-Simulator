@@ -4,7 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="develop/style.css" />
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -14,7 +16,7 @@
     <title>Stocks</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg bg-primary">
       <a class="navbar-brand text-light" href="#">WallStreet Sim</a>
       <button
         class="navbar-toggler"
@@ -41,14 +43,43 @@
           <li class="nav-item">
             <a class="nav-link text-light" href="news.html">News</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="portfolio.html">Portfolio</a>
+          </li>
         </ul>
       </div>
     </nav>
     <div class="container-fluid">
       <div class="display-4 text-center bg-light">Home</div>
+      <!-- tried to implement a carousel but it didn't work -->
+      <!-- <div id="background-carousel">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="item active" style="background-image:url(https://ei.marketwatch.com/Multimedia/2018/08/13/Photos/ZQ/MW-GO249_bull_20180813150902_ZQ.jpg?uuid=57653fb2-9f2c-11e8-b1c8-ac162d7bc1f7)"></div>
+            <div class="item" style="background-image:url(http://placehold.it/1600x800/)"></div>
+            <div class="item" style="background-image:url(http://placehold.it/1600x800/)"></div>  
+          </div>
+        </div>
+      </div> -->
+      <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Login</h5>
+          <p class="card-text">
+            <form>
+              <div class="form-group">
+                <label for="InputUser">User Name</label>
+                <input type="username" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter Username">
+              <div class="form-group">
+                <label for="InputPassword">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter Password">
+              </div>
+              <button type="submit" id="login-btn"class="btn btn-primary">Log In</button>
+            </form>
+          </p>
+        </div>
+      </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="develop/landing.js"></script>
+  <script src="develop/landing.js"></script>
   </body>
 </html>

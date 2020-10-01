@@ -29,6 +29,13 @@ var users = {
 var stock = ["GOOGL", "BA", "AXP", "DOW", "HON"];
 var i = 0;
 var times = 0;
+function buyStock(event){
+  console.log(event.target.parentElement.children[0].textContent)
+}
+function sellStock(event){
+  console.log(event.target.parentElement.children[0].textContent)
+}
+
 
 function getStock(event) {
   console.log(event.target);
@@ -59,10 +66,18 @@ function getStock(event) {
     <div class="card-title h1">${symbol}</div>
     <div class="card-text lead">Price: ${price}</div>
     <div class="card-text lead">Change: ${change}</div>
+    <br>
+    <div class="form-group">
+      <br>
+      <input type="input" class="form-control w-25 p-3" id="stockamount" placeholder="Enter Amount">
+    </div>  
+    <button class="btn btn-primary" id="buybtn" onclick="buyStock(event)">Buy</button>
+    <button class="btn btn-primary" id="buybtn" onclick="sellStock(event)">Sell</button>
     </div>
 `);
   });
 }
 for (const property in users) {
-  console.log(`${property}: ${users[property]}`);
+  console.log(`${property}: ${users[property].user}`);
 }
+
