@@ -4,12 +4,17 @@
 // }
 var loggedin = false;
 var loggedin_name = "";
-var users = JSON.parse(localStorage.getItem("UserProfile"))
+var users;
+if (window.navigator.userAgent == "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0"){
+  users = JSON.parse(localStorage.getItem("UserProfile"))
+} else {
+  users ={}
+}
 // var users = {
 //     "Levi": {
 //       user: "Levi",
 //       password: "123",
-//       stocks: ["GOOGL", "AAPL"],
+//       stocks: {"GOOGL": 12, "AAPL": 12},
 //       networth: "",
 //       cash: "",
 //     },
@@ -52,17 +57,19 @@ function loginfunction(event){
     event.preventDefault();
     var usernameE = document.querySelector("#username").value;
     var passwordE = document.querySelector('#password').value;
+    
     if (usernameE in users && passwordE == users[usernameE].password) {
       console.log('logged in');
       loggedin = true;
       localStorage.setItem("loggedin","true");
-      localStorage.setItem("loginName","usernameE");
+      localStorage.setItem("loginName",usernameE);
       document.querySelector("#logout-btn").setAttribute("style","display: block");
       hidelogin();
       alertfunction('hide');
      } else {
       alertfunction("invalid");
      }
+
 }
 
 function signupfunction(event){
@@ -93,7 +100,7 @@ function alertfunction(message){
   } else if (message == 'hide'){
     document.querySelector("#alert").setAttribute("style","display: none");
   } else if (message == "signup"){
-    document.querySelector("#alert").innerHTML = "signup sucessful";
+    document.querySelector("#alert").innerHTML = "Signup sucessful";
     document.querySelector("#alert").setAttribute("style","display: block");
   }
 }

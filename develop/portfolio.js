@@ -1,9 +1,9 @@
 
-let name = localStorage.getItem('logginName');
+let name = localStorage.getItem('loginName');
+let profile = JSON.parse(localStorage.getItem("UserProfile"));
 
 
 if (localStorage.getItem("loggedin")=='true'){
-    
     document.querySelector("#profile").innerHTML= `<p>Welcome ${name}`;
     displayportfolio();
 } else {
@@ -11,6 +11,13 @@ if (localStorage.getItem("loggedin")=='true'){
 }
 
 function displayportfolio(){
-    var element = document.createElement('div')
-    element.innerHTML = "Stocks "
+    
+    for(stocks in profile[name].stocks){
+        var element = document.createElement('div');
+        element.innerHTML = stocks;
+        if (stocks){
+            element.innerHTML += stocks.value;
+        }
+        document.querySelector("#profile").append(element);
+    }
 }
