@@ -44,38 +44,41 @@
             <a class="nav-link text-light" href="news.html">News</a>
           </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input
-            class="form-control mr-sm-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <button class="btn btn-outline-light my-2 my-sm-0" type="submit">
-            Search Stock
-          </button>
-        </form>
       </div>
     </nav>
     <div class="container-fluid">
-      <div class="display-4 text-center bg-light">Stock Sim</div>
+      <div class="display-4 text-center bg-light">Stock Search</div>
+      <form class="form-inline my-2 my-lg-0">
+        <button class="btn btn-outline-secondary my-2 my-sm-0 mr-2" type="submit" id="searchBtn">
+            Search
+          </button>
+  
+        <input
+          class="form-control mr-sm-2"
+          type="search"
+          placeholder="Search Stock Symbol"
+          aria-label="Search Stock Symbol"
+          id="searchResult"
+        />
+      </form>
+
     </div>
     <div class="container">
-      <ul class="nav nav-tabs align-center">
+      <ul class="nav nav-tabs align-center mt-3">
         <li class="nav-item">
-          <a class="nav-link" href="#" id="GOOGL" onClick="getStock(event)">Google</a>
+          <a class="nav-link" href="#" id="GOOGL" onClick="getStockBtn(event)">Google</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" id="BA" onClick="getStock(event)">Boeing</a>
+          <a class="nav-link" href="#" id="BA" onClick="getStockBtn(event)">Boeing</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" id="AXP" onClick="getStock(event)">American Express</a>
+          <a class="nav-link" href="#" id="AXP" onClick="getStockBtn(event)">American Express</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" id="DOW" onClick="getStock(event)">DOW</a>
+          <a class="nav-link" href="#" id="DOW" onClick="getStockBtn(event)">DOW</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" id="HON" onClick="getStock(event)">HoneyWell</a>
+          <a class="nav-link" href="#" id="HON" onClick="getStockBtn(event)">HoneyWell</a>
         </li>
       </ul>
       <div class="container" id="nav-tabContent">
