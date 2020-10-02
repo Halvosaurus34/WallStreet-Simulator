@@ -4,11 +4,11 @@
 // }
 var loggedin = false;
 var loggedin_name = "";
-var users;
+var users = {};
 if (window.navigator.userAgent == "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0"){
-  users = localStorage.UserProfile ? JSON.parse(localStorage.getItem("UserProfile") ) : {}
+  users = localStorage.UserProfile ? JSON.parse(localStorage.getItem("UserProfile") ) : {"admin":3}
 } else {
-  users = localStorage.UserProfile ? JSON.parse(localStorage.getItem("UserProfile") ) : {}
+  users = localStorage.UserProfile ? JSON.parse(localStorage.getItem("UserProfile") ) : {"admin":3}
 }
 
 
