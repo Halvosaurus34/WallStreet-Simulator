@@ -1,6 +1,6 @@
 
 let name = localStorage.getItem('loginName');
-let profile = JSON.parse(localStorage.getItem("UserProfile"));
+let profile = localStorage.UserProfile ? JSON.parse(localStorage.getItem("UserProfile") ) : {"admin":3}
 
 
 if (localStorage.getItem("loggedin")=='true'){
