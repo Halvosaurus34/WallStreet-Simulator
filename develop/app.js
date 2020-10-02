@@ -1,5 +1,7 @@
 // working api-key, or put your own in here
-users = localStorage.UserProfile ? JSON.parse(localStorage.getItem("UserProfile") ) : {"admin":3}
+users = localStorage.UserProfile
+  ? JSON.parse(localStorage.getItem("UserProfile"))
+  : { admin: 3 };
 name = localStorage.getItem("loginName");
 loggedin = localStorage.getItem("loggedin");
 // var users = {
@@ -13,7 +15,7 @@ loggedin = localStorage.getItem("loggedin");
 //     user: "Jordan",
 //     password: "123"
 //     stocks: {
-  //            "BA": {Price:$210,Amount:5}
+//            "BA": {Price:$210,Amount:5}
 //              "AXP":{Price:$50,Amount:20}
 //              }
 //     networth: "",
@@ -41,7 +43,7 @@ var days = [];
 var query = "";
 //variables for buy & sell stocks
 var Amount = 0; //the increment variable, how many stocks users buy
-var currentNetWorth = Number(users[name].networth).toFixed(2);; //Net worth at start
+var currentNetWorth = Number(users[name].networth).toFixed(2); //Net worth at start
 var bank = Number(users[name].cash).toFixed(2); // total money in bank account
 var selectedStockid = ""; //the stock user want to do actions
 var storedPrice = 0;
@@ -240,11 +242,9 @@ function createGraph() {
 for (const property in users) {
   console.log(`${property}: ${users[property].user}`);
 }
-
-$("#searchBtn").on("click", function (event) {
-  event.preventDefault();
+function onClickSubmit() {
   console.log("click");
   query = $("#searchResult").val();
   console.log(query);
   getStock();
-});
+}

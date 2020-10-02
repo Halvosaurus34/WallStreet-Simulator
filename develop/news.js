@@ -26,7 +26,7 @@ function getArticles() {
         <h6 class="card-subtitle mb-2 text-muted">${info[i].byline.original}</h6>
         <p class="card-text lead">${info[i].section_name}</p>
         <p class="card-text lead">${formatDate}</p>
-        <a href="${info[i].web_url}" class="card-link lead" target="blank">${info[i].web_url}</a>
+        <a href="${info[i].web_url}" class="card-link lead" target="blank">News Link</a>
       </div>
     </div>`);
       console.log(info[i].headline.main);
