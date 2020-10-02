@@ -55,9 +55,15 @@ function buyStock(event) {
     alert("You don't have enough money");
   } else {
     bank = bank - Amount * storedPrice;
+    users[name].stocks[query] = {};
+    users[name].stocks[query].Amount = Amount;
+    users[name].stocks[query].Price = storedPrice;
+    users[name].cash = bank;
     currentNetWorth = currentNetWorth + Amount * storedPrice;
+    users[name].networth = currentNetWorth;
     console.log("You have:" + bank + " left in your bank account");
     console.log("The stock you own worth: " + currentNetWorth + " currently");
+    localStorage.setItem("userProfile",users)
   }
 }
 
@@ -68,9 +74,15 @@ function sellStock(event) {
     alert("You don't have enough stock to sell");
   } else {
     bank = bank + Amount * storedPrice;
+    users[name].stocks[query] = {};
+    users[name].stocks[query].Amount = Amount;
+    users[name].stocks[query].Price = storedPrice;
     currentNetWorth = currentNetWorth - Amount * storedPrice;
+    users[name].cash = bank;
+    users[name].networth = currentNetWorth;
     console.log("You have:" + bank + " left in your bank account");
     console.log("The stock you own worth: " + currentNetWorth + " currently");
+    localStorage.setItem("userProfile",users)
   }
 }
 
