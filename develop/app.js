@@ -35,7 +35,7 @@ loggedin = localStorage.getItem("loggedin");
 //   },
 // };
 
-var stock = ["GOOGL", "BA", "AXP", "DOW", "HON"];
+var stock = ["GOOGL", "BA", "AXP", "DOW", "HON", "TSLA"];
 var i = 0;
 var times = 0;
 var graphVal = [];
