@@ -56,10 +56,9 @@
     <div class="container-fluid">
       <div class="display-4 text-center bg-light">Stock Search</div>
       <form class="form-inline my-2 my-lg-0">
-        <button class="btn btn-outline-secondary my-2 my-sm-0 mr-2" type="submit" id="searchBtn">
-            Search
-          </button>
-  
+        <button class="btn btn-outline-secondary my-2 my-sm-0 mr-2" type="submit" id="searchBtn" onClick="onClickSubmit(event)">
+          Search
+        </button>
         <input
           class="form-control mr-sm-2"
           type="search"
@@ -86,6 +85,9 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#" id="HON" onClick="getStockBtn(event)">HoneyWell</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" id="TSLA" onClick="getStockBtn(event)">Tesla</a>
         </li>
       </ul>
       <div class="container mb-3" id="nav-tabContent">
