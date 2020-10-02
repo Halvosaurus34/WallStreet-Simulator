@@ -31,8 +31,7 @@
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
               <a class="nav-link text-light" href="index.html"
-                >Home </a
-              >
+                >Home </a>
             </li>
             <li class="nav-item">
               <a class="nav-link text-light" href="stocks.html">Stock Sim</a>
@@ -49,7 +48,34 @@
       <div class="container-fluid">
         <div class="display-4 text-center bg-light">Portfolio</div>
     </div>
-    <div id="profile"></div>
+      <div class="container">
+        <p class="lead">
+          <div id="profile"></div>
+          <div class="row">
+            <div class="col-sm" id ="username">
+              User
+            </div>
+            <div class="col-sm" id="networth">
+              Networth
+            </div>
+            <div class="col-sm" id="cash">
+              Cash
+            </div>
+          </div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Stocks</th>
+                <th scope="col">Shares</th>
+                <th scope="col">Value</th>
+                <th scope="col">Change</th>
+              </tr>
+            </thead>
+            <tbody id = "tbody">
+            </tbody>
+          </table>
+        </p>
+    </div>
   <script src="develop/portfolio.js"></script>
 </body>
 </html>

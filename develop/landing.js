@@ -4,17 +4,19 @@
 // }
 var loggedin = false;
 var loggedin_name = "";
-var users;
+var users = {};
 if (window.navigator.userAgent == "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0"){
-  users = localStorage.userProfile ? JSON.parse(localStorage.getItem("UserProfile") ) : []
+  users = localStorage.UserProfile ? JSON.parse(localStorage.getItem("UserProfile") ) : {"admin":3}
 } else {
-  users ={}
+  users = localStorage.UserProfile ? JSON.parse(localStorage.getItem("UserProfile") ) : {"admin":3}
 }
+
+
 // var users = {
 //     "Levi": {
 //       user: "Levi",
 //       password: "123",
-//       stocks: {"GOOGL": 12, "AAPL": 12},
+//       stocks: {"GOOGL":{"Amount":2,"Price":4}, "AAPL": 12},
 //       networth: "",
 //       cash: "",
 //     },
@@ -79,7 +81,7 @@ function signupfunction(event){
     if (usernameE in users){
       console.log('username is taken');
     } else {
-      users[usernameE] = {user: usernameE, password: passwordE, stocks:{"AAPL":2}}
+      users[usernameE] = {user: usernameE, password: passwordE, cash:"20",networth:"28",stocks:{"GOOGL":{Amount:2,Price:"4.00"}}};
       alertfunction('signup')
     }
   localStorage.setItem("UserProfile",JSON.stringify(users));
