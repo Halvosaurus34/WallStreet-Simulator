@@ -1,30 +1,37 @@
 // working api-key, or put your own in here
-var users = {
-  user1: {
-    user: "Levi",
-    stocks: ["GOOGL", "AAPL"],
-    networth: "",
-    cash: "",
-  },
-  user2: {
-    user: "Jordan",
-    stocks: ["BA", "AXP"],
-    networth: "",
-    cash: "",
-  },
-  user3: {
-    user: "Shihan",
-    stocks: ["AXP", "DOW"],
-    networth: "",
-    cash: "",
-  },
-  user4: {
-    user: "Sajal",
-    stocks: ["DOW", "HON"],
-    networth: "",
-    cash: "",
-  },
-};
+users = localStorage.UserProfile ? JSON.parse(localStorage.getItem("UserProfile") ) : {"admin":3}
+name = localStorage.getItem("loginName");
+loggedin = localStorage.getItem("loggedin");
+// var users = {
+//   user1: {
+//     user: "Levi",
+//     stocks: ["GOOGL", "AAPL"],
+//     networth: "",
+//     cash: "",
+//   },
+//   user2: {
+//     user: "Jordan",
+//     password: "123"
+//     stocks: {
+  //            "BA": {Price:$210,Amount:5}
+//              "AXP":{Price:$50,Amount:20}
+//              }
+//     networth: "",
+//     cash: "",
+//   },
+//   user3: {
+//     user: "Shihan",
+//     stocks: ["AXP", "DOW"],
+//     networth: "",
+//     cash: "",
+//   },
+//   user4: {
+//     user: "Sajal",
+//     stocks: ["DOW", "HON"],
+//     networth: "",
+//     cash: "",
+//   },
+// };
 
 var stock = ["GOOGL", "BA", "AXP", "DOW", "HON"];
 var i = 0;
@@ -34,8 +41,8 @@ var days = [];
 var query = "";
 //variables for buy & sell stocks
 var Amount = 0; //the increment variable, how many stocks users buy
-var currentNetWorth = 0; //Net worth at start
-var bank = 1000; // total money in bank account
+var currentNetWorth = Number(users[name].networth).toFixed(2);; //Net worth at start
+var bank = Number(users[name].cash).toFixed(2); // total money in bank account
 var selectedStockid = ""; //the stock user want to do actions
 var storedPrice = 0;
 
@@ -234,7 +241,8 @@ for (const property in users) {
   console.log(`${property}: ${users[property].user}`);
 }
 
-$("#searchBtn").on("click", function () {
+$("#searchBtn").on("click", function (event) {
+  event.preventDefault();
   console.log("click");
   query = $("#searchResult").val();
   console.log(query);
