@@ -54,13 +54,17 @@ function buyStock(event) {
   if (Amount * storedPrice > bank) {
     alert("You don't have enough money");
   } else {
-    bank = bank - Amount * storedPrice;
-    users[name].stocks[query] = {};
-    users[name].stocks[query].Amount = Amount;
-    users[name].stocks[query].Price = storedPrice;
+    console.log(Amount)
+    console.log(storedPrice)
+    bank = Number(bank).toFixed(2) -( parseInt(Amount) * Number(storedPrice).toFixed(2));
+    if(users[name].stocks[query]==undefined) {users[name].stocks[query]={}}
+    if(users[name].stocks[query].Amount == undefined){users[name].stocks[query] = {Amount:"0"} };
+    users[name].stocks[query].Amount = parseInt(users[name].stocks[query].Amount) + parseInt(Amount);
+    users[name].stocks[query].Price = Number(storedPrice).toFixed(2);
     users[name].cash = bank;
-    currentNetWorth = currentNetWorth + Amount * storedPrice;
-    users[name].networth = currentNetWorth;
+    currentNetWorth = parseInt(Amount) * Number(storedPrice).toFixed(2);
+    console.log(`currentNetWorth: $`)
+    users[name].networth = Number(users[name].networth) + Number(currentNetWorth) + Number(bank);
     console.log("You have:" + bank + " left in your bank account");
     console.log("The stock you own worth: " + currentNetWorth + " currently");
     localStorage.setItem("UserProfile",JSON.stringify(users))
@@ -73,13 +77,16 @@ function sellStock(event) {
   if (Amount * storedPrice > currentNetWorth) {
     alert("You don't have enough stock to sell");
   } else {
-    bank = bank + Amount * storedPrice;
-    users[name].stocks[query] = {};
-    users[name].stocks[query].Amount = Amount;
-    users[name].stocks[query].Price = storedPrice;
-    currentNetWorth = currentNetWorth - Amount * storedPrice;
+    console.log(Amount)
+    console.log(storedPrice)
+    bank = Number(bank).toFixed(2) -( parseInt(Amount) * Number(storedPrice).toFixed(2));
+    if(users[name].stocks[query]==undefined) {users[name].stocks[query]={}}
+    if(users[name].stocks[query].Amount == undefined){users[name].stocks[query] = {Amount:"0"} };
+    users[name].stocks[query].Amount = parseInt(users[name].stocks[query].Amount) - parseInt(Amount);
+    users[name].stocks[query].Price = Number(storedPrice).toFixed(2);
     users[name].cash = bank;
-    users[name].networth = currentNetWorth;
+    currentNetWorth = parseInt(Amount) * Number(storedPrice).toFixed(2);
+    users[name].networth = Number(users[name].networth) + Number(currentNetWorth) + Number(bank);
     console.log("You have:" + bank + " left in your bank account");
     console.log("The stock you own worth: " + currentNetWorth + " currently");
     localStorage.setItem("UserProfile",JSON.stringify(users))
@@ -103,7 +110,7 @@ function getStock() {
   $.ajax(settings).done(function (response) {
     var symbol = response["Global Quote"]["01. symbol"];
     var price = response["Global Quote"]["05. price"];
-    storedPrice = price;
+    storedPrice = Number(price).toFixed(2);
     //console.log(price);
     var change = response["Global Quote"]["09. change"];
     $("#nav-tabContent").html(`<div class=" mt-3 border rounded shadow">
@@ -139,7 +146,7 @@ function getStock() {
 }
 
 function inputAmount() {
-  Amount = document.getElementById("myAmount").value;
+  Amount = parseInt(document.getElementById("myAmount").value);
   document.getElementById("amount").innerHTML = "Your entered: " + Amount;
 }
 

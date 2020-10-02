@@ -81,7 +81,7 @@ function signupfunction(event){
     if (usernameE in users){
       console.log('username is taken');
     } else {
-      users[usernameE] = {user: usernameE, password: passwordE, cash:"10000",networth:"10000",stocks:{"GOOGL":{Amount:2,Price:"4.00"}}};
+      users[usernameE] = {user: usernameE, password: passwordE, cash:"10000.00",networth:"10000.00",stocks:{}};
       alertfunction('signup')
     }
   localStorage.setItem("UserProfile",JSON.stringify(users));
