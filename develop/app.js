@@ -76,7 +76,7 @@ function getStock() {
     method: "GET",
     headers: {
       "x-rapidapi-host": "alpha-vantage.p.rapidapi.com",
-      "x-rapidapi-key": "9778abae07msh6e3fcf350e0115cp17ebcajsn6a16d9555f35",
+      "x-rapidapi-key": "3be6752b2emsh6787f77203754dbp18f819jsn9fa84f3aae46",
     },
   };
   $.ajax(settings).done(function (response) {
