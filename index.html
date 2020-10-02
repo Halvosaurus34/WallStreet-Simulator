@@ -17,8 +17,8 @@
     <title>Stocks</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg bg-primary">
-      <a class="navbar-brand text-light" href="#">WallStreet Sim</a>
+    <nav class="navbar navbar-expand-lg bg-dark">
+      <a class="navbar-brand text-light" href="#"><img src="assets\logo.png" width=80/></a>
       <button
         class="navbar-toggler"
         type="button"
@@ -55,33 +55,39 @@
       <div id="background-carousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner" style="z-index: -1;">
           <div class="carousel-item active">
-            <img class="d-block w-100" src="https://api.time.com/wp-content/uploads/2020/02/zoom-zm-stocks-coronavirus.jpg" alt="First slide">
+            <img class="d-block w-auto h-auto align-middle" src="https://api.time.com/wp-content/uploads/2020/02/zoom-zm-stocks-coronavirus.jpg" alt="First slide">
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="https://images.unsplash.com/photo-1534469650761-fce6cc26ac0d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80">
+            <img class="d-block w-auto h-auto align-middle" src="https://images.unsplash.com/photo-1534469650761-fce6cc26ac0d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80">
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="https://www.desktopbackground.org/download/1920x1080/2014/12/11/869410_wall-street-wallpapers-hd-on-wallpapers-bros_1926x1086_h.jpg" alt="Third slide">
+            <img class="d-block w-auto h-auto align-middle" src="https://www.desktopbackground.org/download/1920x1080/2014/12/11/869410_wall-street-wallpapers-hd-on-wallpapers-bros_1926x1086_h.jpg" alt="Third slide">
           </div>
         </div>
       </div>
-      <div class="card text-white bg-primary mb-3" id="loginBox"style="max-width: 18rem; margin-left:auto; margin-right:auto; z-index:1">
-        <div class="card-body">
-          <h5 class="card-title">Login</h5>
-          <p class="card-text">
-            <form>
-              <div class="form-group">
-                <label for="InputUser">User Name</label>
-                <input type="username" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter Username">
-              </div>
-              <div class="form-group">
-                <label for="InputPassword">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Enter Password">
-              </div>
-              <button type="submit" id="login-btn"class="btn btn-primary">Log In</button>
-              <button type="submit" id="signup-btn"class="btn btn-primary">Sign Up</button>
-            </form>
-          </p>
+      <div class="row">
+        <div class="card text-white bg-primary m-3 float-left col-11 col-sm-11 col-md-2 col-lg-2" id="loginBox">
+          <div class="card-body">
+            <h5 class="card-title">Login</h5>
+            <p class="card-text">
+              <form>
+                <div class="form-group">
+                  <label for="InputUser">User Name</label>
+                  <input type="username" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter Username">
+                </div>
+                <div class="form-group">
+                  <label for="InputPassword">Password</label>
+                  <input type="password" class="form-control" id="password" placeholder="Enter Password">
+                </div>
+                <button type="submit" id="login-btn"class="btn btn-primary">Log In</button>
+                <button type="submit" id="signup-btn"class="btn btn-primary">Sign Up</button>
+              </form>
+            </p>
+          </div>
+        </div>
+        <div class="card m-3 shadow col-11 col-sm-11 col-md-6 col-lg-6">
+          <div class="h3 text-center">Welcome to WallStreet Simulator!</div>
+          <div class="lead text-center">Please log in or sign up to start trading. View the "Stock Sim" page to buy and sell stock with simulated currency. Find all your purchased stocks in the "Portfolio Page". Also, check out the latest fincancial news in the "News" page.</div>
         </div>
       </div>
       <div class="alert alert-primary" role="alert" id="alert" style="display: none;">

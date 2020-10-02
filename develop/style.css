@@ -1,7 +1,3 @@
-.navbar {
-    background-color: #00008b;
-}
-
 html,
 body {
     height: 100%;
@@ -9,11 +5,23 @@ body {
     position: relative;
 }
 
+body {
+    font-family: 'Sansita Swashed', cursive !important;
+    color: #212529;
+    text-align: left;
+    background-color: white;
+    background-image: url("https://media.giphy.com/media/Cv7wrQjYcd6hO/giphy.gif");
+}
+
 #background-carousel {
     position: fixed;
     width: 100%;
     height: 100%;
     z-index: -1;
+}
+
+.card-body {
+    background-color: lightblue;
 }
 
 .carousel,
