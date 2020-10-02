@@ -1,7 +1,6 @@
 // working api-key, or put your own in here
 users = localStorage.UserProfile ?
-    JSON.parse(localStorage.getItem("UserProfile")) :
-    { admin: 3 };
+    JSON.parse(localStorage.getItem("UserProfile")) : { admin: 3 };
 name = localStorage.getItem("loginName");
 loggedin = localStorage.getItem("loggedin");
 // var users = {
