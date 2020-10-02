@@ -24,12 +24,12 @@ body {
     overflow: hidden;
 }
 
-.item {
+.carousel-item {
     width: 100%;
     height: 100%;
     background-position: center center;
     background-size: cover;
-    z-index: -1;
+    z-index: -20;
 }
 
 #content-wrapper {
