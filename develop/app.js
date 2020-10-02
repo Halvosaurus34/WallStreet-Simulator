@@ -104,12 +104,10 @@ function getStock() {
     <div class="card-text lead" id = "price">Price: ${Number(price).toFixed(
       2
     )}</div>
-    <div class="card-text lead" id = "change">Change: ${Number(change).toFixed(
-      2
-    )}</div>
-    <br>
+    <div class="card-text lead mb-3" id = "change">Change: ${Number(
+      change
+    ).toFixed(2)}</div>
     <div class="form-group">
-      <br>
       <input type="text" id="myAmount" placeholder="Enter Amount" oninput="inputAmount()">
       <p id="amount"></p>
       <div class="sell-buy-stocks-buttons">
@@ -160,12 +158,10 @@ function getStockBtn(event) {
     <div class="card-text lead" id = "price">Price: ${Number(price).toFixed(
       2
     )}</div>
-    <div class="card-text lead" id = "change">Change: ${Number(change).toFixed(
-      2
-    )}</div>
-    <br>
+    <div class="card-text lead mb-3" id = "change">Change: ${Number(
+      change
+    ).toFixed(2)}</div>
     <div class="form-group">
-      <br>
       <input type="text" id="myAmount" placeholder="Enter Amount" oninput="inputAmount()">
       <p id="amount"></p>
       <div class="sell-buy-stocks-buttons">
