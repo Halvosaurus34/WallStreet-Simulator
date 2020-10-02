@@ -63,7 +63,7 @@ function buyStock(event) {
     users[name].networth = currentNetWorth;
     console.log("You have:" + bank + " left in your bank account");
     console.log("The stock you own worth: " + currentNetWorth + " currently");
-    localStorage.setItem("userProfile",users)
+    localStorage.setItem("UserProfile",JSON.stringify(users))
   }
 }
 
@@ -82,7 +82,7 @@ function sellStock(event) {
     users[name].networth = currentNetWorth;
     console.log("You have:" + bank + " left in your bank account");
     console.log("The stock you own worth: " + currentNetWorth + " currently");
-    localStorage.setItem("userProfile",users)
+    localStorage.setItem("UserProfile",JSON.stringify(users))
   }
 }
 
@@ -263,7 +263,8 @@ function createGraph() {
 for (const property in users) {
   console.log(`${property}: ${users[property].user}`);
 }
-function onClickSubmit() {
+function onClickSubmit(event) {
+  event.preventDefault()
   console.log("click");
   query = $("#searchResult").val();
   console.log(query);
