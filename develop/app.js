@@ -112,17 +112,14 @@ function getStock() {
       <br>
       <input type="text" id="myAmount" placeholder="Enter Amount" oninput="inputAmount()">
       <p id="amount"></p>
-    </div>  
+      <div class="sell-buy-stocks-buttons">
+          <button class="buyStocks btn btn-success" type="button" onclick="buyStock(event)">Buy</button>
+          <button class="sellStocks btn btn-danger" type="button" onclick="sellStock(event)">Sell</button>
+      </div>
+      </div>
     
     <div class="chart-container w-auto h-auto">
     <canvas id="myChart"></canvas>
-    </div>
-         <div class="sell-buy-stocks">
-                    <div class="sell-buy-stocks-buttons">
-                        <input class="sell-buy-stocks-buttons-buy" type="button" onclick="buyStock(event)" value="Buy" />
-                        <input class="sell-buy-stocks-buttons-sell" type="button" onclick="sellStock(event)" value="Sell" />
-                    </div>
-         </div>
     </div>
 `);
     getGraph();
@@ -154,21 +151,33 @@ function getStockBtn(event) {
     var price = response["Global Quote"]["05. price"];
     var change = response["Global Quote"]["09. change"];
     $("#nav-tabContent").html(`<div class=" mt-3 border rounded shadow">
-      <div
-          class="ml-3 mt-3 mb-3"
-          role="tabpanel"
-          aria-labelledby="list-1-list"
-      >
-      <div class="card-title h1">${symbol}</div>
-      <div class="card-text lead">Price: ${Number(price).toFixed(2)}</div>
-      <div class="card-text lead mb-3">Change: ${Number(change).toFixed(
-        2
-      )}</div>
-      <div class="chart-container w-auto h-auto" >
-        <canvas id="myChart"></canvas>
+    <div
+        class="ml-3 mt-3 mb-3"
+        role="tabpanel"
+        aria-labelledby="list-1-list"
+    >
+    <div class="card-title h1">${symbol}</div>
+    <div class="card-text lead" id = "price">Price: ${Number(price).toFixed(
+      2
+    )}</div>
+    <div class="card-text lead" id = "change">Change: ${Number(change).toFixed(
+      2
+    )}</div>
+    <br>
+    <div class="form-group">
+      <br>
+      <input type="text" id="myAmount" placeholder="Enter Amount" oninput="inputAmount()">
+      <p id="amount"></p>
+      <div class="sell-buy-stocks-buttons">
+          <button class="buyStocks btn btn-success" type="button" onclick="buyStock(event)">Buy</button>
+          <button class="sellStocks btn btn-danger" type="button" onclick="sellStock(event)">Sell</button>
       </div>
       </div>
-  `);
+    
+    <div class="chart-container w-auto h-auto">
+    <canvas id="myChart"></canvas>
+    </div>
+`);
     getGraph();
   });
 }
