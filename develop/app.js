@@ -1,7 +1,6 @@
 // working api-key, or put your own in here
 users = localStorage.UserProfile ?
-    JSON.parse(localStorage.getItem("UserProfile")) :
-    { admin: 3 };
+    JSON.parse(localStorage.getItem("UserProfile")) : { admin: 3 };
 name = localStorage.getItem("loginName");
 loggedin = localStorage.getItem("loggedin");
 // var users = {
@@ -49,71 +48,70 @@ var selectedStockid = ""; //the stock user want to do actions
 var storedPrice = 0;
 
 function buyStock(event) {
-  console.log(event.target);
-  console.log("buy");
-  if (Amount * storedPrice > bank) {
-    alert("You don't have enough money");
-  } else {
-    console.log(Amount)
-    console.log(storedPrice)
-    bank = Number(bank).toFixed(2) -( parseInt(Amount) * Number(storedPrice).toFixed(2));
-    if(users[name].stocks[query]==undefined) {users[name].stocks[query]={}}
-    if(users[name].stocks[query].Amount == undefined){users[name].stocks[query] = {Amount:"0"} };
-    users[name].stocks[query].Amount = parseInt(users[name].stocks[query].Amount) + parseInt(Amount);
-    users[name].stocks[query].Price = Number(storedPrice).toFixed(2);
-    users[name].cash = bank;
-    currentNetWorth = parseInt(Amount) * Number(storedPrice).toFixed(2);
-    console.log(`currentNetWorth: $`)
-    users[name].networth = Number(users[name].networth) + Number(currentNetWorth) + Number(bank);
-    console.log("You have:" + bank + " left in your bank account");
-    console.log("The stock you own worth: " + currentNetWorth + " currently");
-    localStorage.setItem("UserProfile",JSON.stringify(users))
-  }
+    console.log(event.target);
+    console.log("buy");
+    if (Amount * storedPrice > bank) {
+        alert("You don't have enough money");
+    } else {
+        console.log(Amount)
+        console.log(storedPrice)
+        bank = Number(bank).toFixed(2) - (parseInt(Amount) * Number(storedPrice).toFixed(2));
+        if (users[name].stocks[query] == undefined) { users[name].stocks[query] = {} }
+        if (users[name].stocks[query].Amount == undefined) { users[name].stocks[query] = { Amount: "0" } };
+        users[name].stocks[query].Amount = parseInt(users[name].stocks[query].Amount) + parseInt(Amount);
+        users[name].stocks[query].Price = Number(storedPrice).toFixed(2);
+        users[name].cash = bank;
+        currentNetWorth = parseInt(Amount) * Number(storedPrice).toFixed(2);
+        console.log(`currentNetWorth: $`)
+        users[name].networth = Number(users[name].networth) + Number(currentNetWorth) + Number(bank);
+        console.log("You have:" + bank + " left in your bank account");
+        console.log("The stock you own worth: " + currentNetWorth + " currently");
+        localStorage.setItem("UserProfile", JSON.stringify(users))
+    }
 }
 
 function sellStock(event) {
-  console.log(event.target);
-  console.log("sell");
-  if (Amount * storedPrice > currentNetWorth) {
-    alert("You don't have enough stock to sell");
-  } else {
-    console.log(Amount)
-    console.log(storedPrice)
-    bank = Number(bank).toFixed(2) -( parseInt(Amount) * Number(storedPrice).toFixed(2));
-    if(users[name].stocks[query]==undefined) {users[name].stocks[query]={}}
-    if(users[name].stocks[query].Amount == undefined){users[name].stocks[query] = {Amount:"0"} };
-    users[name].stocks[query].Amount = parseInt(users[name].stocks[query].Amount) - parseInt(Amount);
-    users[name].stocks[query].Price = Number(storedPrice).toFixed(2);
-    users[name].cash = bank;
-    currentNetWorth = parseInt(Amount) * Number(storedPrice).toFixed(2);
-    users[name].networth = Number(users[name].networth) + Number(currentNetWorth) + Number(bank);
-    console.log("You have:" + bank + " left in your bank account");
-    console.log("The stock you own worth: " + currentNetWorth + " currently");
-    localStorage.setItem("UserProfile",JSON.stringify(users))
-  }
+    console.log(event.target);
+    console.log("sell");
+    if (Amount * storedPrice > currentNetWorth) {
+        alert("You don't have enough stock to sell");
+    } else {
+        console.log(Amount)
+        console.log(storedPrice)
+        bank = Number(bank).toFixed(2) - (parseInt(Amount) * Number(storedPrice).toFixed(2));
+        if (users[name].stocks[query] == undefined) { users[name].stocks[query] = {} }
+        if (users[name].stocks[query].Amount == undefined) { users[name].stocks[query] = { Amount: "0" } };
+        users[name].stocks[query].Amount = parseInt(users[name].stocks[query].Amount) - parseInt(Amount);
+        users[name].stocks[query].Price = Number(storedPrice).toFixed(2);
+        users[name].cash = bank;
+        currentNetWorth = parseInt(Amount) * Number(storedPrice).toFixed(2);
+        users[name].networth = Number(users[name].networth) + Number(currentNetWorth) + Number(bank);
+        console.log("You have:" + bank + " left in your bank account");
+        console.log("The stock you own worth: " + currentNetWorth + " currently");
+        localStorage.setItem("UserProfile", JSON.stringify(users))
+    }
 }
 
 function getStock() {
-  var settings = {
-    async: true,
-    crossDomain: true,
-    url:
-      "https://alpha-vantage.p.rapidapi.com/query?symbol=" +
-      query +
-      "&function=GLOBAL_QUOTE",
-    method: "GET",
-    headers: {
-      "x-rapidapi-host": "alpha-vantage.p.rapidapi.com",
-      "x-rapidapi-key": "3be6752b2emsh6787f77203754dbp18f819jsn9fa84f3aae46",
-    },
-  };
-  $.ajax(settings).done(function (response) {
-    var symbol = response["Global Quote"]["01. symbol"];
-    var price = response["Global Quote"]["05. price"];
-    storedPrice = Number(price).toFixed(2);
-    //console.log(price);
-    var change = response["Global Quote"]["09. change"];
-    $("#nav-tabContent").html(`<div class=" mt-3 border rounded shadow">
+    var settings = {
+        async: true,
+        crossDomain: true,
+        url: "https://alpha-vantage.p.rapidapi.com/query?symbol=" +
+            query +
+            "&function=GLOBAL_QUOTE",
+        method: "GET",
+        headers: {
+            "x-rapidapi-host": "alpha-vantage.p.rapidapi.com",
+            "x-rapidapi-key": "3be6752b2emsh6787f77203754dbp18f819jsn9fa84f3aae46",
+        },
+    };
+    $.ajax(settings).done(function(response) {
+        var symbol = response["Global Quote"]["01. symbol"];
+        var price = response["Global Quote"]["05. price"];
+        storedPrice = Number(price).toFixed(2);
+        //console.log(price);
+        var change = response["Global Quote"]["09. change"];
+        $("#nav-tabContent").html(`<div class=" mt-3 border rounded shadow">
     <div
         class="ml-3 mt-3 mb-3"
         role="tabpanel"
@@ -144,13 +142,12 @@ function getStock() {
 }
 
 function inputAmount() {
-<<<<<<< HEAD
-  Amount = parseInt(document.getElementById("myAmount").value);
-  document.getElementById("amount").innerHTML = "Your entered: " + Amount;
-=======
-    Amount = document.getElementById("myAmount").value;
+    Amount = parseInt(document.getElementById("myAmount").value);
     document.getElementById("amount").innerHTML = "Your entered: " + Amount;
->>>>>>> 0d55bc44e62d5329a0b049b02a5d29299d007402
+
+    //Amount = document.getElementById("myAmount").value;
+    //document.getElementById("amount").innerHTML = "Your entered: " + Amount;
+
 }
 
 function getStockBtn(event) {
