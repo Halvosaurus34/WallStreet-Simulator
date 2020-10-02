@@ -43,10 +43,21 @@ var days = [];
 var query = "";
 //variables for buy & sell stocks
 var Amount = 0; //the increment variable, how many stocks users buy
-var currentNetWorth = Number(users[name].networth).toFixed(2); //Net worth at start
+var NetWorth = Number(users[name].networth).toFixed(2); 
 var bank = Number(users[name].cash).toFixed(2); // total money in bank account
 var selectedStockid = ""; //the stock user want to do actions
 var storedPrice = 0;
+var assetBought = 0;
+
+function calculateAssets(){
+  let aTotal = 0;
+  for(stock in users[name].stocks){
+    console.log(`${stock}  Amount: ${ users[name].stocks[stock].Amount} Price: ${ users[name].stocks[stock].Price}`)
+    aTotal += ( users[name].stocks[stock].Amount * users[name].stocks[stock].Price);
+  }
+  return aTotal
+}
+
 
 function buyStock(event) {
   console.log(event.target);
@@ -61,12 +72,14 @@ function buyStock(event) {
     if(users[name].stocks[query].Amount == undefined){users[name].stocks[query] = {Amount:"0"} };
     users[name].stocks[query].Amount = parseInt(users[name].stocks[query].Amount) + parseInt(Amount);
     users[name].stocks[query].Price = Number(storedPrice).toFixed(2);
-    users[name].cash = bank;
-    currentNetWorth = parseInt(Amount) * Number(storedPrice).toFixed(2);
+    users[name].cash = Number(bank).toFixed(2);
+    assetBought = parseInt(Amount) * Number(storedPrice).toFixed(2);
+    console.log(assetBought);
+    console.log(bank);
+    console.log(Number(users[name].networth))
     console.log(`currentNetWorth: $`)
-    users[name].networth = Number(users[name].networth) + Number(currentNetWorth) + Number(bank);
+    users[name].networth = calculateAssets() + Number(bank);
     console.log("You have:" + bank + " left in your bank account");
-    console.log("The stock you own worth: " + currentNetWorth + " currently");
     localStorage.setItem("UserProfile",JSON.stringify(users))
   }
 }
@@ -74,21 +87,27 @@ function buyStock(event) {
 function sellStock(event) {
   console.log(event.target);
   console.log("sell");
-  if (Amount * storedPrice > currentNetWorth) {
+  if (Amount  > users[name].stocks[query].Amount) {
     alert("You don't have enough stock to sell");
   } else {
     console.log(Amount)
     console.log(storedPrice)
-    bank = Number(bank).toFixed(2) -( parseInt(Amount) * Number(storedPrice).toFixed(2));
+    console.log(bank)
+    let val =(parseInt(Amount) * Number(storedPrice).toFixed(2));
+    console.log(val);
+    bank = parseFloat(bank).toFixed(2) + parseFloat(val).toFixed(2);
+    console.log(bank)
     if(users[name].stocks[query]==undefined) {users[name].stocks[query]={}}
     if(users[name].stocks[query].Amount == undefined){users[name].stocks[query] = {Amount:"0"} };
     users[name].stocks[query].Amount = parseInt(users[name].stocks[query].Amount) - parseInt(Amount);
     users[name].stocks[query].Price = Number(storedPrice).toFixed(2);
-    users[name].cash = bank;
-    currentNetWorth = parseInt(Amount) * Number(storedPrice).toFixed(2);
-    users[name].networth = Number(users[name].networth) + Number(currentNetWorth) + Number(bank);
+    users[name].cash = Number(bank).toFixed(2);
+    assetBought = parseInt(Amount) * Number(storedPrice).toFixed(2);
+    console.log(assetBought);
+    console.log(bank)
+    console.log(Number(users[name].networth))
+    users[name].networth = calculateAssets() + Number(bank);
     console.log("You have:" + bank + " left in your bank account");
-    console.log("The stock you own worth: " + currentNetWorth + " currently");
     localStorage.setItem("UserProfile",JSON.stringify(users))
   }
 }
@@ -110,7 +129,7 @@ function getStock() {
   $.ajax(settings).done(function (response) {
     var symbol = response["Global Quote"]["01. symbol"];
     var price = response["Global Quote"]["05. price"];
-    storedPrice = Number(price).toFixed(2);
+    storedPrice = price;
     //console.log(price);
     var change = response["Global Quote"]["09. change"];
     $("#nav-tabContent").html(`<div class=" mt-3 border rounded shadow">
@@ -144,13 +163,8 @@ function getStock() {
 }
 
 function inputAmount() {
-<<<<<<< HEAD
   Amount = parseInt(document.getElementById("myAmount").value);
   document.getElementById("amount").innerHTML = "Your entered: " + Amount;
-=======
-    Amount = document.getElementById("myAmount").value;
-    document.getElementById("amount").innerHTML = "Your entered: " + Amount;
->>>>>>> 0d55bc44e62d5329a0b049b02a5d29299d007402
 }
 
 function getStockBtn(event) {

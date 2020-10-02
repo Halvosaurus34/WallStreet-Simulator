@@ -2,6 +2,12 @@
 let name = localStorage.getItem('loginName');
 let profile = localStorage.UserProfile ? JSON.parse(localStorage.getItem("UserProfile") ) : {"admin":3}
 
+for (stock in profile[name].stocks){
+    if (profile[name].stocks[stock].Amount == 0){
+        delete profile[name].stocks[stock];
+    }
+}
+
 
 if (localStorage.getItem("loggedin")=='true'){
     document.querySelector("#username").innerHTML= `<p>Welcome ${name}</p>`;
@@ -29,7 +35,7 @@ function displayportfolio(){
         element.append(colB);
 
         var colC = document.createElement('td');
-        colC.innerText = profile[name].stocks[stocks].Price;
+        colC.innerText = (Number(profile[name].stocks[stocks].Price).toFixed(2)*parseInt(profile[name].stocks[stocks].Amount));
         element.append(colC);
 
         var colD = document.createElement('td');
