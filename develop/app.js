@@ -94,7 +94,7 @@ function sellStock(event) {
     console.log(bank)
     let val =(parseInt(Amount) * Number(storedPrice).toFixed(2));
     console.log(val);
-    bank = parseFloat(bank).toFixed(2) + parseFloat(val).toFixed(2);
+    bank = parseFloat(bank) + parseFloat(val);
     console.log(bank)
     if(users[name].stocks[query]==undefined) {users[name].stocks[query]={}}
     if(users[name].stocks[query].Amount == undefined){users[name].stocks[query] = {Amount:"0"} };
