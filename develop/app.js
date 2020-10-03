@@ -183,6 +183,7 @@ function getStockBtn(event) {
         query = event.target.id;
         var symbol = response["Global Quote"]["01. symbol"];
         var price = response["Global Quote"]["05. price"];
+        storedPrice = price;
         var change = response["Global Quote"]["09. change"];
         $("#nav-tabContent").html(`<div class=" mt-3 border rounded shadow">
     <div

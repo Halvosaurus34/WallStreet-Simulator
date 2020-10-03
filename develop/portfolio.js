@@ -1,10 +1,20 @@
 
-let name = localStorage.getItem('loginName');
-let profile = localStorage.UserProfile ? JSON.parse(localStorage.getItem("UserProfile") ) : {"admin":3}
 
-for (stock in profile[name].stocks){
-    if (profile[name].stocks[stock].Amount == 0){
-        delete profile[name].stocks[stock];
+let name = localStorage.getItem('loginName');
+let profile = localStorage.UserProfile ? JSON.parse(localStorage.getItem("UserProfile") ) : {"admin":3};
+let ApiKeys = ["U9M45KN6EXV1KTVQ","TA9EE71SOVACK2XU","8ZW8E8Z54IFKYKB8","97FC01UH2X45DWDR","J1LEDKM4WWKRTKD4"];
+let index = 0;
+let url = "https://www.alphavantage.co/query?function=VWAP&symbol=";
+let param = "&interval=15min&apikey=";
+let updatedIndex = {};
+let VWAP = 0;
+
+
+function stockdeletion(){
+    for (stock in profile[name].stocks){
+        if (profile[name].stocks[stock].Amount == 0){
+            delete profile[name].stocks[stock];
+        }
     }
 }
 
@@ -13,7 +23,9 @@ if (localStorage.getItem("loggedin")=='true'){
     document.querySelector("#username").innerHTML= `<p>Welcome ${name}</p>`;
     document.querySelector("#networth").innerHTML= `<p>Networth: ${profile[name].networth}</p>`;
     document.querySelector("#cash").innerHTML= `<p>Cash:  ${profile[name].cash}</p>`;
+    stockdeletion();
     displayportfolio();
+    
 } else {
 
     document.querySelector("#profile").innerHTML=` <div class="alert alert-danger" role="alert">
@@ -39,7 +51,7 @@ function displayportfolio(){
         element.append(colC);
 
         var colD = document.createElement('td');
-        colD.innerText = profile[name].stocks[stocks].Price;
+        colD.innerText = apiCall(stocks);
         element.append(colD);
 
         document.querySelector("#tbody").append(element);
@@ -56,3 +68,21 @@ function hideportfolio(){
     document.querySelector(".row").setAttribute("style","display:none");
     document.querySelector(".table").setAttribute("style","display:none");
 }
+
+function apiCall(symbol){
+    fetch(url + symbol + param + ApiKeys[index])
+        .then(response =>response.text())
+        .then(str =>passobject(JSON.parse(str)))
+    
+        index++;
+        if (index > 4){
+        index = 0;
+        }
+        return VWAP;
+}
+
+  function passobject(obj){
+    updatedIndex = obj;
+    let key  = Object.keys(updatedIndex["Technical Analysis: VWAP"])[0];
+    VWAP = updatedIndex["Technical Analysis: VWAP"][key].VWAP
+  }
