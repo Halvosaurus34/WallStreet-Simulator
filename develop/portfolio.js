@@ -51,7 +51,7 @@ function displayportfolio(){
         element.append(colC);
 
         var colD = document.createElement('td');
-        colD.innerText = apiCall(stocks);
+        apiCall(stocks,colD);
         element.append(colD);
 
         document.querySelector("#tbody").append(element);
@@ -69,20 +69,23 @@ function hideportfolio(){
     document.querySelector(".table").setAttribute("style","display:none");
 }
 
-function apiCall(symbol){
+function apiCall(symbol,changeCol){
     fetch(url + symbol + param + ApiKeys[index])
         .then(response =>response.text())
-        .then(str =>passobject(JSON.parse(str)))
-    
-        index++;
-        if (index > 4){
-        index = 0;
-        }
-        return VWAP;
+        .then((str) =>{
+            passobject(JSON.parse(str))
+            index++;
+            if (index > 4){
+                index = 0;
+            }
+            changeCol.innerText = Number((VWAP - profile[name].stocks[symbol].Price)/profile[name].stocks[symbol].Price*100).toFixed(2) + "%";
+        })
+
 }
 
   function passobject(obj){
     updatedIndex = obj;
     let key  = Object.keys(updatedIndex["Technical Analysis: VWAP"])[0];
     VWAP = updatedIndex["Technical Analysis: VWAP"][key].VWAP
+    console.log(VWAP);
   }
