@@ -30,7 +30,7 @@
         </div>
       </div>
     </div>
-    <nav class="navbar navbar-expand-lg bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
       <a class="navbar-brand text-light" href="#"><img src="assets\logo.png" width=80/></a>
       <button
         class="navbar-toggler"
@@ -48,11 +48,11 @@
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
             <a class="nav-link text-light" href="index.html"
-              >Home <span class="sr-only">(current)</span></a
+              >Home<span class="sr-only">(current)</span></a
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link text-light" href="stocks.html">Stock Sim</a>
+            <a class="nav-link text-light" href="stocks.html">Stocks</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-light" href="news.html">News</a>
@@ -67,8 +67,7 @@
     <div class="container-fluid">
       <div class="display-4 text-center bg-light">Home</div>
       
-      <div class="row">
-        <div class="card text-white bg-primary m-3 float-left col-11 col-sm-11 col-md-2 col-lg-2" id="loginBox">
+        <div class="card text-white bg-primary m-3 float-left col-11 col-sm-11 col-md-4 col-lg-2" id="loginBox">
           <div class="card-body">
             <h5 class="card-title">Login</h5>
             <p class="card-text">
@@ -87,17 +86,17 @@
             </p>
           </div>
         </div>
-        <div class="card m-3 shadow col-11 col-sm-11 col-md-6 col-lg-6 d-inline-flex  ">
-          <div class="h3 text-center">Welcome to WallStreet Simulator!</div>
-          <div class="lead text-center">Please log in or sign up to start trading. View the "Stock Sim" page to buy and sell stock with simulated currency. Find all your purchased stocks in the "Portfolio Page". Also, check out the latest fincancial news in the "News" page.</div>
-        </div>
-      </div>
       <div class="alert alert-primary" role="alert" id="alert" style="display: none;">
       </div>
-      <button class="btn btn-primary float-right" id="logout-btn" style="display: none;">Sign Out</button>
+      <button class="btn btn-primary float-right mt-3" id="logout-btn" style="display: none;">Sign Out</button>
     </div>
-    <div class="list-group d-inline-flex p-2" id="cbc-feed">
-      
+    <div class="card m-3 shadow col-11 col-sm-11 col-md-6 col-lg-6 d-inline-flex justify-content-middle">
+      <div class="h3 text-center">Welcome to WallStreet Simulator!</div>
+      <div class="lead text-center">Please log in or sign up to start trading. View the "Stock Sim" page to buy and sell stock with simulated currency. Find all your purchased stocks in the "Portfolio Page". Also, check out the latest fincancial news in the "News" page.</div>
+    </div>
+
+    <div class="card m-3 shadow col-11 col-sm-11 col-md-6 col-lg-6 d-inline-flex justify-content-middle">
+    <div class="list-group d-inline-flex m-3" id="cbc-feed"></div>
     </div>
   <script src="develop/landing.js"></script>
   </body>
