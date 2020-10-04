@@ -17,6 +17,19 @@
     <title>Stocks</title>
   </head>
   <body>
+    <div id="background-carousel" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner" style="z-index: -1;">
+        <div class="carousel-item active">
+          <img class="d-block w-auto h-auto align-middle" src="https://api.time.com/wp-content/uploads/2020/02/zoom-zm-stocks-coronavirus.jpg" alt="First slide">
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-auto h-auto align-middle" src="https://s3-prod.crainsnewyork.com/s3fs-public/1008p2_Wall%20Street%20sign-Main_i.jpg">
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-auto h-auto align-middle" src="https://www.desktopbackground.org/download/1920x1080/2014/12/11/869410_wall-street-wallpapers-hd-on-wallpapers-bros_1926x1086_h.jpg" alt="Third slide">
+        </div>
+      </div>
+    </div>
     <nav class="navbar navbar-expand-lg bg-dark">
       <a class="navbar-brand text-light" href="#"><img src="assets\logo.png" width=80/></a>
       <button
@@ -50,21 +63,10 @@
         </ul>
       </div>
     </nav>
+    
     <div class="container-fluid">
       <div class="display-4 text-center bg-light">Home</div>
-      <div id="background-carousel" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner" style="z-index: -1;">
-          <div class="carousel-item active">
-            <img class="d-block w-auto h-auto align-middle" src="https://api.time.com/wp-content/uploads/2020/02/zoom-zm-stocks-coronavirus.jpg" alt="First slide">
-          </div>
-          <div class="carousel-item">
-            <img class="d-block w-auto h-auto align-middle" src="https://images.unsplash.com/photo-1534469650761-fce6cc26ac0d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80">
-          </div>
-          <div class="carousel-item">
-            <img class="d-block w-auto h-auto align-middle" src="https://www.desktopbackground.org/download/1920x1080/2014/12/11/869410_wall-street-wallpapers-hd-on-wallpapers-bros_1926x1086_h.jpg" alt="Third slide">
-          </div>
-        </div>
-      </div>
+      
       <div class="row">
         <div class="card text-white bg-primary m-3 float-left col-11 col-sm-11 col-md-2 col-lg-2" id="loginBox">
           <div class="card-body">
@@ -85,7 +87,7 @@
             </p>
           </div>
         </div>
-        <div class="card m-3 shadow col-11 col-sm-11 col-md-6 col-lg-6">
+        <div class="card m-3 shadow col-11 col-sm-11 col-md-6 col-lg-6 d-inline-flex">
           <div class="h3 text-center">Welcome to WallStreet Simulator!</div>
           <div class="lead text-center">Please log in or sign up to start trading. View the "Stock Sim" page to buy and sell stock with simulated currency. Find all your purchased stocks in the "Portfolio Page". Also, check out the latest fincancial news in the "News" page.</div>
         </div>
@@ -94,7 +96,9 @@
       </div>
       <button class="btn btn-primary float-right" id="logout-btn" style="display: none;">Sign Out</button>
     </div>
-
+    <div class="list-group d-inline-flex p-2" id="cbc-feed">
+      
+    </div>
   <script src="develop/landing.js"></script>
   </body>
 </html>

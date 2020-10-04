@@ -5,43 +5,13 @@
 var loggedin = false;
 var loggedin_name = "";
 var users = {};
+const RSS_URL = `https://repos.codehot.tech/cors_proxy.php?url=https://www.cbc.ca/cmlink/rss-business`;
+let feed = {};
 if (window.navigator.userAgent == "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0"){
   users = localStorage.UserProfile ? JSON.parse(localStorage.getItem("UserProfile") ) : {"admin":3}
 } else {
   users = localStorage.UserProfile ? JSON.parse(localStorage.getItem("UserProfile") ) : {"admin":3}
 }
-
-
-// var users = {
-//     "Levi": {
-//       user: "Levi",
-//       password: "123",
-//       stocks: {"GOOGL":{"Amount":2,"Price":4}, "AAPL": 12},
-//       networth: "",
-//       cash: "",
-//     },
-//     "Jordan": {
-//       user: "Jordan",
-//       password: "123",
-//       stocks: ["BA", "AXP"],
-//       networth: "",
-//       cash: "",
-//     },
-//     "Shihan": {
-//       user: "Shihan",
-//       password: "123",
-//       stocks: ["AXP", "DOW"],
-//       networth: "",
-//       cash: "",
-//     },
-//     "Sajal": {
-//       user: "Sajal",
-//       password: "123",
-//       stocks: ["DOW", "HON"],
-//       networth: "",
-//       cash: "",
-//     },
-//   };
 
 
 
@@ -116,3 +86,59 @@ if(localStorage.getItem("loggedin")=='true'){
 document.querySelector("#login-btn").addEventListener('click',loginfunction);
 document.querySelector("#signup-btn").addEventListener('click',signupfunction);
 document.querySelector("#logout-btn").addEventListener('click',logoutfuction)
+
+
+
+function setFeed(obj){
+  console.log(obj);
+  for (let i = 0; i<obj.channel.item.length;i++){
+    var g = (obj.channel.item[i].title)
+    var split = g.split("%20");
+    var join = split.join(" ");
+    split = join.split("%2C");
+    join = split.join(",");
+    split = join.split("%27");
+    join = split.join("'");
+    split = join.split("%25");
+    join = split.join("%");
+    split = join.split("%24");
+    join = split.join("$");
+    
+    let elem = document.createElement("a")
+    elem.classList.add("list-group-item");
+    elem.classList.add("list-group-item-action");
+    elem.classList.add("flex-column");
+    elem.classList.add("align-items-start");
+    
+    var div = document.createElement("div");
+    div.classList.add("d-flex")
+    div.classList.add("w-100")
+    div.classList.add("justify-content-between")
+    
+    var h5 = document.createElement("h5");
+    h5.classList.add("mb-1")
+    div.append(h5)
+
+    var small = document.createElement("small");
+    div.append(small)
+
+    var p = document.createElement("p");
+    p.classList.add("mb-1")
+    
+    
+    elem.append(div);
+    elem.append(p)
+    
+    
+    elem.setAttribute("href",obj.channel.item[i].link)
+    h5.textContent = join;
+    small.textContent = obj.channel.item[i].author;
+    document.querySelector("#cbc-feed").append(elem);
+  }
+}
+
+
+
+fetch(RSS_URL)
+  .then(response => response.text())
+  .then(str => setFeed(JSON.parse(str)))
