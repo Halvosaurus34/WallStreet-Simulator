@@ -84,6 +84,7 @@ function apiCall(symbol,changeCol,icon){
             }
             changeCol.innerText = Number((VWAP - profile[name].stocks[symbol].Price)/profile[name].stocks[symbol].Price*100).toFixed(2);
             showarrow(icon,changeCol);
+            changeCol.innerText += "% "
             changeCol.append(icon);
         })
 
@@ -101,9 +102,11 @@ function showarrow(icon,element){
     if (x>0){
         icon.classList.add("fas");
         icon.classList.add("fa-arrow-alt-circle-up");
+        icon.setAttribute("style","color:green;")
     } else if (x<0){
         icon.classList.add("fas");
         icon.classList.add("fa-arrow-alt-circle-down");
+        icon.setAttribute("style","color:red;")
     } else {
         icon.classList.add("fas")
         icon.classList.add("fa-arrow-alt-circle-right");
