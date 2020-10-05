@@ -8,9 +8,7 @@ We were asked to create an app that uses two APIs. Our team created a stock trad
 
 The main issues were figuring out how to use modals, figuring out how to implement a stock buying feature, and implementing the graph using chart.js.
 
-## Collaborators
-
-Our Team:
+## Our Team
 
 ---
 
@@ -26,7 +24,7 @@ Our Team:
 
 ---
 
-[Shihan](https://github.com/CoraZhang) GitHub.
+[Shihan Zhang](https://github.com/CoraZhang) GitHub.
 
 ---
 
@@ -44,11 +42,11 @@ Our Team:
 
 ---
 
-I used [Font Awesome](https://fontawesome.com/) for my Icons.
+We used [Font Awesome](https://fontawesome.com/) for my Icons.
 
 ---
 
-I used [Chart.js](https://www.chartjs.org/) for the graphs.
+We used [Chart.js](https://www.chartjs.org/) for the graphs.
 
 ---
 

@@ -17,12 +17,12 @@ function getArticles() {
     console.log(response);
     for (var i = 0; i < responseNum; i++) {
       var date = info[i].pub_date;
-      //turns API date into a nicer look
+      //turns API date into a nicer date
       var formatDate = moment(date).format("MMMM Do YYYY, h:mm:ss a");
       console.log("Date: ", formatDate);
       //creates a card with prepend HTML
-      $("#results")
-        .prepend(`<div class="card w-100 mt-3 mb-2" style="width: 18rem;">
+      $("#results").prepend(`
+    <div class="card w-100 mt-3 mb-2" style="width: 18rem;">
       <div class="card-body">
         <h5 class="card-title">${info[i].headline.main}</h5>
         <h6 class="card-subtitle mb-2 text-muted">${info[i].byline.original}</h6>
