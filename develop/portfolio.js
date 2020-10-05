@@ -47,12 +47,16 @@ function displayportfolio(){
         element.append(colB);
 
         var colC = document.createElement('td');
-        colC.innerText = (Number(profile[name].stocks[stocks].Price).toFixed(2)*parseInt(profile[name].stocks[stocks].Amount));
+        colC.innerHTML= (Number(profile[name].stocks[stocks].Price).toFixed(2)*parseInt(profile[name].stocks[stocks].Amount));
         element.append(colC);
 
         var colD = document.createElement('td');
-        apiCall(stocks,colD);
+        var icon = document.createElement("i");
+        apiCall(stocks,colD,icon);
+        
+        
         element.append(colD);
+        
 
         document.querySelector("#tbody").append(element);
     }
@@ -69,7 +73,7 @@ function hideportfolio(){
     document.querySelector(".table").setAttribute("style","display:none");
 }
 
-function apiCall(symbol,changeCol){
+function apiCall(symbol,changeCol,icon){
     fetch(url + symbol + param + ApiKeys[index])
         .then(response =>response.text())
         .then((str) =>{
@@ -78,14 +82,31 @@ function apiCall(symbol,changeCol){
             if (index > 4){
                 index = 0;
             }
-            changeCol.innerText = Number((VWAP - profile[name].stocks[symbol].Price)/profile[name].stocks[symbol].Price*100).toFixed(2) + "%";
+            changeCol.innerText = Number((VWAP - profile[name].stocks[symbol].Price)/profile[name].stocks[symbol].Price*100).toFixed(2);
+            showarrow(icon,changeCol);
+            changeCol.append(icon);
         })
 
 }
 
-  function passobject(obj){
+function passobject(obj){
     updatedIndex = obj;
     let key  = Object.keys(updatedIndex["Technical Analysis: VWAP"])[0];
     VWAP = updatedIndex["Technical Analysis: VWAP"][key].VWAP
-    console.log(VWAP);
-  }
+}
+
+function showarrow(icon,element){
+    var x = parseFloat(element.innerText);
+    console.log(x)
+    if (x>0){
+        icon.classList.add("fas");
+        icon.classList.add("fa-arrow-alt-circle-up");
+    } else if (x<0){
+        icon.classList.add("fas");
+        icon.classList.add("fa-arrow-alt-circle-down");
+    } else {
+        icon.classList.add("fas")
+        icon.classList.add("fa-arrow-alt-circle-right");
+    }
+    console.log(icon)
+}
