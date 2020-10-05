@@ -67,7 +67,7 @@ function buyStock(event) {
 function sellStock(event) {
   console.log(event.target);
   console.log("sell");
-  if (Amount > users[name].stocks[query].Amount) {
+  if (Amount > users[name].stocks[query].Amount || users[name].stocks[query].Amount==undefined ) {
     $("#nostock").modal({ show: true });
     // alert("You don't have enough stock to sell");
   } else {
