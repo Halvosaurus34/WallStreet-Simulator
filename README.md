@@ -1,4 +1,4 @@
-# Project-1
+# WallStreet Simulator
 
 # Description
 
