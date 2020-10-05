@@ -1,15 +1,19 @@
 
-
+// initialize the variables to get the local storage info
 let name = localStorage.getItem('loginName');
 let profile = localStorage.UserProfile ? JSON.parse(localStorage.getItem("UserProfile") ) : {"admin":3};
+
+//variables for the ajax call
 let ApiKeys = ["U9M45KN6EXV1KTVQ","TA9EE71SOVACK2XU","8ZW8E8Z54IFKYKB8","97FC01UH2X45DWDR","J1LEDKM4WWKRTKD4"];
 let index = 0;
 let url = "https://www.alphavantage.co/query?function=VWAP&symbol=";
 let param = "&interval=15min&apikey=";
+//stock info
 let updatedIndex = {};
+//volume weighted average price
 let VWAP = 0;
 
-
+//deletes stock from the data tree if the amount is empty
 function stockdeletion(){
     for (stock in profile[name].stocks){
         if (profile[name].stocks[stock].Amount == 0){
@@ -18,7 +22,7 @@ function stockdeletion(){
     }
 }
 
-
+//checks to see if the user is logged in, /if true then it calls a function that displays portfolio
 if (localStorage.getItem("loggedin")=='true'){
     document.querySelector("#username").innerHTML= `<p>Welcome ${name}</p>`;
     document.querySelector("#networth").innerHTML= `<p>Networth: $${profile[name].networth}</p>`;
@@ -33,6 +37,7 @@ if (localStorage.getItem("loggedin")=='true'){
     hideportfolio();
 }
 
+//creates an element for each stock the user has and apeends the information to the table
 function displayportfolio(){
     
     for(stocks in profile[name].stocks){
@@ -66,6 +71,7 @@ function displayportfolio(){
    // document.querySelector(".table").classList.remove(".d-none");
 }
 
+// hides the table if the user is not logged in
 function hideportfolio(){
     document.querySelector(".row").classList.remove(".d-block");
     document.querySelector(".table").classList.remove(".d-block");
@@ -73,6 +79,7 @@ function hideportfolio(){
     document.querySelector(".table").setAttribute("style","display:none");
 }
 
+//gets the value for the stock change and then appends it to change column
 function apiCall(symbol,changeCol,icon){
     fetch(url + symbol + param + ApiKeys[index])
         .then(response =>response.text())
@@ -90,12 +97,14 @@ function apiCall(symbol,changeCol,icon){
 
 }
 
+//gets the wap value from the passed object
 function passobject(obj){
     updatedIndex = obj;
     let key  = Object.keys(updatedIndex["Technical Analysis: VWAP"])[0];
     VWAP = updatedIndex["Technical Analysis: VWAP"][key].VWAP
 }
 
+//function that displays the arrow indicator kbesides the 'change' value
 function showarrow(icon,element){
     var x = parseFloat(element.innerText);
     console.log(x)
