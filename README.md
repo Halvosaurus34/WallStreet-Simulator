@@ -40,7 +40,7 @@ Our Team:
 
 ---
 
-[Weather App](https://halvosaurus34.github.io/Project-1/)
+[Wallstreet Simulator](https://halvosaurus34.github.io/Project-1/)
 
 ---
 
