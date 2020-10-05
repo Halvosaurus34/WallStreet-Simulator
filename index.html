@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="develop/style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+
+    <title>Stocks</title>
+</head>
+
+<body>
+    <div id="background-carousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner" style="z-index: -1;">
+            <div class="carousel-item active">
+                <img class="d-block w-auto h-auto align-middle" src="https://api.time.com/wp-content/uploads/2020/02/zoom-zm-stocks-coronavirus.jpg" alt="First slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-auto h-auto align-middle" src="https://s3-prod.crainsnewyork.com/s3fs-public/1008p2_Wall%20Street%20sign-Main_i.jpg">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-auto h-auto align-middle" src="https://www.desktopbackground.org/download/1920x1080/2014/12/11/869410_wall-street-wallpapers-hd-on-wallpapers-bros_1926x1086_h.jpg" alt="Third slide">
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <a class="navbar-brand text-light" href="#"><img src="assets\logo.png" width=80/></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link text-light" href="index.html">Home<span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="stocks.html">Stocks</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="news.html">News</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="portfolio.html">Portfolio</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="display-4 text-center bg-light">Home</div>
+
+        <div class="card text-white bg-primary m-3 float-left col-11 col-sm-11 col-md-4 col-lg-2" id="loginBox">
+            <div class="card-body">
+                <h5 class="card-title">Login</h5>
+                <p class="card-text">
+                    <form>
+                        <div class="form-group">
+                            <label for="InputUser">User Name</label>
+                            <input type="username" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter Username">
+                        </div>
+                        <div class="form-group">
+                            <label for="InputPassword">Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="Enter Password">
+                        </div>
+                        <button type="submit" id="login-btn" class="btn btn-primary">Log In</button>
+                        <button type="submit" id="signup-btn" class="btn btn-primary">Sign Up</button>
+                    </form>
+                </p>
+            </div>
+        </div>
+        <div id="myModal" class="modal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Problem logging in</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>invalid input for username or password</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-primary float-right mt-3" id="logout-btn" style="display: none;">Sign Out</button>
+    </div>
+    <div class="card m-3 shadow col-11 col-sm-11 col-md-6 col-lg-6 d-inline-flex justify-content-middle">
+        <div class="h3 text-center">Welcome to WallStreet Simulator!</div>
+        <div class="lead text-center">Please log in or sign up to start trading. View the "Stocks" page to buy and sell stock with simulated currency. Find all your purchased stocks in the "Portfolio Page". Also, check out the latest fincancial news in the "News" page.</div>
+    </div>
+
+    <div class="card m-3 shadow col-11 col-sm-11 col-md-6 col-lg-6 d-inline-flex justify-content-middle">
+        <div class="list-group d-inline-flex m-3" id="cbc-feed"></div>
+    </div>
+    <footer>
+        <div class="fixed-bottom">
+            by @team-e
+        </div>
+    </footer>
+    <script src="develop/landing.js"></script>
+</body>
+
+</html>
