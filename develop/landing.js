@@ -68,13 +68,11 @@ function logoutfuction(){
 function alertfunction(message){
   if (message == 'invalid'){
     $('#myModal').modal('show');
-    document.querySelector("#alert").innerHTML = "Password and Username don't match";
-    document.querySelector("#alert").setAttribute("style","display: block");
   } else if (message == 'hide'){
-    document.querySelector("#alert").setAttribute("style","display: none");
   } else if (message == "signup"){
-    document.querySelector("#alert").innerHTML = "Signup sucessful";
-    document.querySelector("#alert").setAttribute("style","display: block");
+    $('#myModal').modal('show');
+    $(".modal-title").html("Welcome")
+    $(".modal-body").html("Go to stocks to get started")
   }
 }
 
