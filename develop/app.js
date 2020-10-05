@@ -62,7 +62,8 @@ function buyStock(event) {
   console.log(event.target);
   console.log("buy");
   if (Amount * storedPrice > bank) {
-    alert("You don't have enough money");
+    $('#nocash').modal({show:true})
+ //   alert("You don't have enough money");
   } else {
     console.log(Amount)
     console.log(storedPrice)
@@ -87,7 +88,8 @@ function sellStock(event) {
   console.log(event.target);
   console.log("sell");
   if (Amount  > users[name].stocks[query].Amount) {
-    alert("You don't have enough stock to sell");
+    $('#nostock').modal({show:true})
+//    alert("You don't have enough stock to sell");
   } else {
     console.log(Amount)
     console.log(storedPrice)

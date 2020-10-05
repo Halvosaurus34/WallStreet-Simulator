@@ -21,8 +21,8 @@ function stockdeletion(){
 
 if (localStorage.getItem("loggedin")=='true'){
     document.querySelector("#username").innerHTML= `<p>Welcome ${name}</p>`;
-    document.querySelector("#networth").innerHTML= `<p>Networth: ${profile[name].networth}</p>`;
-    document.querySelector("#cash").innerHTML= `<p>Cash:  ${profile[name].cash}</p>`;
+    document.querySelector("#networth").innerHTML= `<p>Networth: $${profile[name].networth}</p>`;
+    document.querySelector("#cash").innerHTML= `<p>Cash:  $${profile[name].cash}</p>`;
     stockdeletion();
     displayportfolio();
     
