@@ -39,7 +39,7 @@ The other issue was we encountered was when we were working with the API limitat
 
 ---
 
-[GitHub Repository](https://github.com/Halvosaurus34/Project-1)
+[GitHub Repository](https://github.com/Halvosaurus34/WallStreet-Simulator)
 
 ---
 
