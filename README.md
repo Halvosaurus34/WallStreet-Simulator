@@ -35,7 +35,7 @@ The other issue was we encountered was when we were working with the API limitat
 
 ## Links
 
-![Website Screenshot](./assets/screenshot.PNG)
+![Website Screenshot](./assets/wallstreet.png)
 
 ---
 
